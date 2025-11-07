@@ -10,6 +10,9 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Objects;
+
+import javax.annotation.Nullable;
+
 import org.jetbrains.annotations.NotNull;
 
 
@@ -45,6 +48,18 @@ public class Stream<T> implements Closeable {
     	}
     	return new Stream<T>(new ObjectArray<T>(elements));
     }
+
+    @NotNull
+    public static <T> Stream<T> ofNullable(@Nullable T element) {
+    	return ( element == null) ? Stream.<T>empty() : Stream.of(element);
+    }
+    
+    @NotNull
+    public static <T> Stream<T> ofNullable(@Nullable T[] array) {
+    	return ( array == null) ? Stream.<T>empty() : Stream.of(array);
+    }
+    
+    
     
     @NotNull
     public static <K, V> Stream<Map.Entry<K, V>> of(@NotNull Map<K, V> map) {
