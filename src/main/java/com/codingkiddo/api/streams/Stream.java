@@ -59,7 +59,20 @@ public class Stream<T> implements Closeable {
     	return ( array == null) ? Stream.<T>empty() : Stream.of(array);
     }
     
+    @NotNull
+    public static <K, V> Stream<Map.Entry<K, V>> ofNullable(@Nullable Map<K, V> map) { 
+    	return (map == null) ? Stream.<Map.Entry<K, V>>empty() : Stream.of(map);
+    }
     
+    @NotNull
+    public static <T> Stream<T> ofNullable(@Nullable Iterator<? extends T> iterator) {
+    	return ( iterator == null ) ? Stream.<T>empty() : Stream.of(iterator);
+    }
+    
+    @NotNull
+    public static <T> Stream<T> ofNullable(@Nullable Iterable<? extends T> iterable) {
+    	return ( iterable == null ) ? Stream.<T>empty() : Stream.of(iterable);
+    }
     
     @NotNull
     public static <K, V> Stream<Map.Entry<K, V>> of(@NotNull Map<K, V> map) {
