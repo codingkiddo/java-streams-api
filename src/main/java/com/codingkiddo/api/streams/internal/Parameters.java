@@ -2,14 +2,14 @@ package com.codingkiddo.api.streams.internal;
 
 import org.jetbrains.annotations.NotNull;
 
-public final class Parameterss {
+public final class Parameters {
 
     public Runnable closeHandler;
 
-    public static Parameterss wrapWithCloseHandler(Parameterss params, @NotNull Runnable closeHandler) {
-        final Parameterss newParams;
+    public static Parameters wrapWithCloseHandler(Parameters params, @NotNull Runnable closeHandler) {
+        final Parameters newParams;
         if (params == null) {
-            newParams = new Parameterss();
+            newParams = new Parameters();
             newParams.closeHandler = closeHandler;
         } else {
             newParams = params;
