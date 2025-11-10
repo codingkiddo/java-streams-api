@@ -1,6 +1,6 @@
 package com.codingkiddo.api.streams;
 
-import com.codingkiddo.api.streams.internal.Parameterss;
+import com.codingkiddo.api.streams.internal.Parameters;
 import com.codingkiddo.api.streams.iterator.LazyIterator;
 import com.codingkiddo.api.streams.operator.ObjectArray;
 
@@ -19,7 +19,7 @@ import org.jetbrains.annotations.NotNull;
 public class Stream<T> implements Closeable {
 
     private final Iterator<? extends T> iterator;
-    private final Parameterss params;
+    private final Parameters params;
 
     private Stream(Iterator<? extends T> iterator) {
         this(null, iterator);
@@ -29,7 +29,7 @@ public class Stream<T> implements Closeable {
         this(null, new LazyIterator<>(iterator));
     }
 
-    Stream(Parameterss params, Iterator<? extends T> iterator) {
+    Stream(Parameters params, Iterator<? extends T> iterator) {
         this.params = params;
         this.iterator = iterator;
     }
