@@ -60,6 +60,8 @@ public class IntStream implements  Closeable {
 		return new IntStream(new IntArray(new int[] {t}));
 	}
 	
+	
+	
 	@Override
 	public void close() throws IOException {
 		// TODO Auto-generated method stub
