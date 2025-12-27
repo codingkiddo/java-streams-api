@@ -3,6 +3,7 @@ package com.codingkiddo.api.streams;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Objects;
@@ -38,6 +39,24 @@ public class Stream<T> implements Closeable {
     @NotNull
     public static <T> Stream<T> empty() {
         return of(Collections.<T>emptyList());
+    }
+    
+    @NotNull
+    public Stream<T> sorted() {
+    	Comparator<T> comparator = new Comparator<T>() {
+			@Override
+			public int compare(T o1, T o2) {
+				Comparable c1 = (Comparable) o1;
+				Comparable c2 = (Comparable) o2;
+				return c1.compareTo(c2);
+			}
+		};
+		return null;
+    }
+    
+    @NotNull
+    public Stream<T> sorted(@Nullable final Comparator<? super T> comparator) {
+    	return null;
     }
     
     public void forEach(@NotNull final Consumer<? super T> action) {
