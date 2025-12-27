@@ -15,6 +15,7 @@ import org.jetbrains.annotations.NotNull;
 import com.codingkiddo.api.streams.function.Consumer;
 import com.codingkiddo.api.streams.internal.Parameters;
 import com.codingkiddo.api.streams.iterator.LazyIterator;
+import com.codingkiddo.api.streams.operator.ObjSorted;
 import com.codingkiddo.api.streams.operator.ObjectArray;
 
 
@@ -51,12 +52,12 @@ public class Stream<T> implements Closeable {
 				return c1.compareTo(c2);
 			}
 		};
-		return null;
+		return sorted(comparator);
     }
     
     @NotNull
     public Stream<T> sorted(@Nullable final Comparator<? super T> comparator) {
-    	return null;
+    	return new Stream<T>(params, new ObjSorted<T>(iterator, comparator));
     }
     
     public void forEach(@NotNull final Consumer<? super T> action) {
