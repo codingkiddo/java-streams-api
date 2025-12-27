@@ -4,6 +4,7 @@ import java.util.Objects;
 
 import org.jetbrains.annotations.NotNull;
 
+@FunctionalInterface
 public interface Consumer<T> {
 
 	void accept(T t);
