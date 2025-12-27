@@ -1,17 +1,20 @@
 package com.codingkiddo.api.streams.operator;
 
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
 import org.jetbrains.annotations.NotNull;
 
-import com.codingkiddo.api.streams.iterator.LsaIterator;
+import com.codingkiddo.api.streams.internal.Operators;
+import com.codingkiddo.api.streams.iterator.LsaExtIterator;
 
-public class ObjSorted<T> extends LsaIterator<T> {
+public class ObjSorted<T> extends LsaExtIterator<T> {
 
 	private final Iterator<? extends T> iterator;
 	private final Comparator<? super T> comparator;
+	private Iterator<T> sortedIterator;
 	
 	public ObjSorted(
 			@NotNull Iterator<? extends T> iterator, 
@@ -22,11 +25,16 @@ public class ObjSorted<T> extends LsaIterator<T> {
 	}
 	
 	@Override
-	public T nextIteration() {
-		if ( isInitialized ) {
-//			final List<T> list = Operat
-		}
-		return null;
-	}
+    protected void nextIteration() {
+        if (!isInit) {
+            final List<T> list = Operators.<T>toList(iterator);
+            Collections.sort(list, comparator);
+            sortedIterator = list.iterator();
+        }
+        hasNext = sortedIterator.hasNext();
+        if (hasNext) {
+            next = sortedIterator.next();
+        }
+    }
 
 }
