@@ -1,9 +1,5 @@
 package com.codingkiddo.api.streams;
 
-import com.codingkiddo.api.streams.internal.Parameters;
-import com.codingkiddo.api.streams.iterator.LazyIterator;
-import com.codingkiddo.api.streams.operator.ObjectArray;
-
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.Collections;
@@ -14,6 +10,11 @@ import java.util.Objects;
 import javax.annotation.Nullable;
 
 import org.jetbrains.annotations.NotNull;
+
+import com.codingkiddo.api.streams.function.Consumer;
+import com.codingkiddo.api.streams.internal.Parameters;
+import com.codingkiddo.api.streams.iterator.LazyIterator;
+import com.codingkiddo.api.streams.operator.ObjectArray;
 
 
 public class Stream<T> implements Closeable {
@@ -37,6 +38,12 @@ public class Stream<T> implements Closeable {
     @NotNull
     public static <T> Stream<T> empty() {
         return of(Collections.<T>emptyList());
+    }
+    
+    public void forEach(@NotNull final Consumer<? super T> action) {
+    	while(iterator.hasNext()) {
+    		action.accept(iterator.next());
+    	}
     }
     
     @SafeVarargs
