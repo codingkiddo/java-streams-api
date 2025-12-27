@@ -1,3 +1,4 @@
+package com.codingkiddo.api.test;
 
 import com.codingkiddo.api.streams.Stream;
 import com.codingkiddo.api.streams.function.Consumer;

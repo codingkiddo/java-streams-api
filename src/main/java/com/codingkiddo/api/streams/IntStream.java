@@ -8,6 +8,7 @@ import org.jetbrains.annotations.NotNull;
 
 import com.codingkiddo.api.streams.internal.Parameters;
 import com.codingkiddo.api.streams.iterator.PrimitiveIterator;
+import com.codingkiddo.api.streams.operator.IntArray;
 
 public class IntStream implements  Closeable {
 
