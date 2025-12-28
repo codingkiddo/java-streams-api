@@ -15,6 +15,7 @@ import org.jetbrains.annotations.NotNull;
 import com.codingkiddo.api.streams.function.Consumer;
 import com.codingkiddo.api.streams.internal.Parameters;
 import com.codingkiddo.api.streams.iterator.LazyIterator;
+import com.codingkiddo.api.streams.operator.ObjDistinct;
 import com.codingkiddo.api.streams.operator.ObjSorted;
 import com.codingkiddo.api.streams.operator.ObjectArray;
 
@@ -53,6 +54,11 @@ public class Stream<T> implements Closeable {
 			}
 		};
 		return sorted(comparator);
+    }
+    
+    @NotNull
+    public Stream<T> distinct() {
+        return new Stream<T>(params, new ObjDistinct<T>(iterator));
     }
     
     @NotNull
