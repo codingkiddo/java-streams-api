@@ -14,7 +14,7 @@ public class Main {
 		
 		Consumer<String> cs1 = System.out::println;
 		System.out.println("-----------------------------------");
-		Stream.of("Monkey", "Lion", "Giraffe", "Lemur", "Lion").sorted().forEach(co1);
+		Stream.of("Monkey", "Lion", "Giraffe", "Lemur", "Lion").distinct().sorted().forEach(co1);
 		System.out.println("-----------------------------------");
 		Stream.of("Monkey", "Lion", "Giraffe", "Lemur", "Lion").forEach(cs1);
 	}
