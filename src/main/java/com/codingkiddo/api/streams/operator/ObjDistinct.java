@@ -20,6 +20,7 @@ public class ObjDistinct<T> extends LsaExtIterator<T> {
 	
 	@Override
 	protected void nextIteration() {
+//		System.out.println("ObjDistinct -> nextIteration()");
 		while (hasNext = iterator.hasNext()) {
 			next = iterator.next();
 			if(set.add(next))

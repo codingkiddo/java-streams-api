@@ -68,7 +68,9 @@ public class Stream<T> implements Closeable {
     
     public void forEach(@NotNull final Consumer<? super T> action) {
     	while(iterator.hasNext()) {
-    		action.accept(iterator.next());
+    		T next = iterator.next();
+//    		System.out.println(next);
+    		action.accept(next);
     	}
     }
     
