@@ -21,6 +21,7 @@ public class ObjectArray<T> extends LsaIterator<T> {
 
 	@Override
 	public T nextIteration() {
+//		System.out.println("ObjectArray -> nextIteration()");
 		return elements[index++];
 	}
 

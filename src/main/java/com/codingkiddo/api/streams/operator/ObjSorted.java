@@ -26,8 +26,10 @@ public class ObjSorted<T> extends LsaExtIterator<T> {
 	
 	@Override
     protected void nextIteration() {
+//		System.out.println("ObjSorted -> nextIteration() ->  " + isInit);
         if (!isInit) {
             final List<T> list = Operators.<T>toList(iterator);
+//            System.out.println("list: " + list);
             Collections.sort(list, comparator);
             sortedIterator = list.iterator();
         }
